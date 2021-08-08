@@ -1,5 +1,6 @@
 package org.tpg.ecommerce.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,14 +10,29 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Product {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
+	@Column(name="description",columnDefinition="LONGTEXT")
 	private String description;
 	private int quantity;
 	private int price;
 	@ManyToOne
 	private Category category;
+
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Product(int id, String name, String description, int quantity, int price, Category category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.quantity = quantity;
+		this.price = price;
+		this.category = category;
+	}
 
 	public Category getCategory() {
 		return category;

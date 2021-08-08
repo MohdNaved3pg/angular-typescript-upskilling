@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CartItem {
@@ -11,7 +12,9 @@ public class CartItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@OneToOne
 	private User user;
+	@OneToOne
 	private Product product;
 	private int quantity;
 
