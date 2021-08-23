@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="p-3 mb-2 bg-info text-white text-center">
+        <h1>{{category.name}}</h1>
+    </div>
+    <div class="row">
+        <a routerLink="/product/{{ product.id }}" class="card col-sm-2"
+            style="width:200px; height: 520px; margin: 10px; padding:10px" *ngFor="let product of products">
+            <img class="card-img-top" src="{{ imageURLEndpoint + product.id}}" alt="No Image Available" height="290">
+            <div class="card-body">
+                <h4 class="card-title">{{product.name}}</h4>
+                <p class="card-text">${{product.price}}</p>
+            </div>
+        </a>
+    </div>
+</div>

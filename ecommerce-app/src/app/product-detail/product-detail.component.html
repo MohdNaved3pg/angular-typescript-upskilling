@@ -1,0 +1,9 @@
+<div routerLink="/product/{{ product.id }}" class="card"
+    style="width:300px; ">
+    <img class="card-img-top" src="{{ imageURLEndpoint + product.id}}" alt="No Image Available" height="290">
+    <div class="card-body">
+        <h4 class="card-title">{{product.name}}</h4>
+        <p class="card-text">${{product.price}}</p>
+        <button class="btn btn-primary btn-lg btn-block">Add to Cart</button>
+    </div>
+</div>
