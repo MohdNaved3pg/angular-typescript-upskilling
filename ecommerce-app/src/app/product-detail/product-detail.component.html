@@ -1,9 +1,52 @@
-<div routerLink="/product/{{ product.id }}" class="card"
-    style="width:300px; ">
-    <img class="card-img-top" src="{{ imageURLEndpoint + product.id}}" alt="No Image Available" height="290">
-    <div class="card-body">
-        <h4 class="card-title">{{product.name}}</h4>
-        <p class="card-text">${{product.price}}</p>
-        <button class="btn btn-primary btn-lg btn-block">Add to Cart</button>
+<div class="container" style="background: #fff">
+    <br /><br />
+    <div class="row">
+        <div class="col-sm-4 img-thumbnail" id="proImg">
+            <img src='{{ imageURLEndpoint + product.id}}' alt="No Image Available" />
+            <div class="caption">
+                <a href="/" class="btn btn-primary btn-block myBoldFont">
+                    <h4><span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-cart" viewBox="0 0 17 17">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                        </span> Add To Cart</h4>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="card" id="details">
+                <div class="card-heading proTitle">
+                    <h2><b>{{product.name}}</b></h2>
+                </div>
+                <div class="card-body">
+                    <h2><b>$ {{product.price}}</b></h2>
+                    <br />
+                    <h4><b>Seller : </b>Unknown</h4>
+                    <br />
+                    <h4><b>Category : </b>{{product.category.name}}</h4>
+                    <br />
+                    <h4><b>Cash On Delevery : </b>Eligible</h4>
+                    <br />
+                    <h4><b>Avalable Stock : </b>{{product.quantity}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="card col-sm-12">
+            <div class="card-heading">
+                <h2><b>Product Description</b></h2>
+            </div>
+            <div class="card-body">
+                <h3>
+                    <ul>
+                        <li *ngFor="let desc of product.description.split('\n')">{{desc}}</li><br />
+                    </ul>
+                </h3>
+            </div>
+        </div>
     </div>
 </div>

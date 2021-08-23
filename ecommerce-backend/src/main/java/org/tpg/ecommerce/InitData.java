@@ -41,12 +41,11 @@ public class InitData {
 		for (int i = 21; i <= 38; i++) {
 			productRepository.save(new Product(i, "Mobile-" + i
 					+ " (Aqua Green, 4GB RAM, 64GB Storage) -Amoled Dot Display | 48MP Sony Sensor IMX582 | Snapdragon 678 Processor ",
-					"\n" + "\n"
-							+ "    Display: FHD+ (1080x2400) AMOLED Dot display; 16.33 centimeters (6.43 inch); 20:9 aspect ratio\n"
+					"    Display: FHD+ (1080x2400) AMOLED Dot display; 16.33 centimeters (6.43 inch); 20:9 aspect ratio\n"
 							+ "    Camera: 48 MP Quad Rear camera with 8MP Ultra-wide, 2MP Macro and Portrait lens| 13 MP Front camera\n"
 							+ "    Battery: 5000 mAh large battery with 33W fast charger in-box and Type-C connectivity\n"
 							+ "    Processor: Qualcomm Snapdragon 678 with Kryo 460 Octa-core; 11nm process; Up to 2.2GHz clock speed\n"
-							+ "    Memory, Storage & SIM: 4GB RAM | 64GB UFS 2.2 storage expandable up to 512GB with dedicated SD card slot | Dual SIM (nano+nano) dual standby (4G+4G)\n",
+							+ "    Memory, Storage & SIM: 4GB RAM | 64GB UFS 2.2 storage expandable up to 512GB with dedicated SD card slot | Dual SIM (nano+nano) dual standby (4G+4G)",
 					10, 999, category));
 		}
 	}
