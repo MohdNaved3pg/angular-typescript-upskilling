@@ -14,6 +14,12 @@ import { ProductService } from '../service/product-service';
 })
 export class ProductListComponent implements OnInit {
 
+  products: Product[] = []
+  filteredProductList: Product[] = []
+  category: Category = { id: 0, name: "Invalid Category" };
+  imageURLEndpoint: string = environment.backendURL + "/product/image/"
+  sortProductBy: string = 'name-asc';
+
   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -22,12 +28,44 @@ export class ProductListComponent implements OnInit {
     var categoryId = this.route.snapshot.paramMap.get('categoryId');
     if (categoryId != null) {
       this.productService.getProducts(categoryId as string).subscribe((data: Product[]) => {
-        this.products = data
-          , this.category = data[0].category
+        this.products = data,
+          this.category = data[0].category,
+          this.sortProductList(),
+          this.products.forEach(this.setRandomCardColor),
+          this.filteredProductList = this.products
       });
     }
   }
-  products: Product[] = []
-  category: Category = { id: 0, name: "Invalid Category" };
-  imageURLEndpoint: string = environment.backendURL + "/product/image/"
+  sortProductList(): void {
+    var propertyVsDirection = this.sortProductBy.split("-");
+    var property = propertyVsDirection[0] as 'name' | 'price';
+    this.filteredProductList = this.filteredProductList.sort((a, b) => {
+      if (a[property] > b[property]) {
+        return (propertyVsDirection[1] === 'desc') ? -1 : 1;
+      }
+      if (a[property] < b[property]) {
+        return (propertyVsDirection[1] === 'desc') ? 1 : -1;
+      }
+      return 0;
+    })
+  }
+
+  setRandomCardColor(product: Product) {
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += Math.floor(Math.random() * 10);
+    }
+    product.cardColor = color;
+  }
+
+  filterProducts(inputText: any) {
+    if (!inputText) {
+      this.filteredProductList = this.products;
+    } else {
+      this.filteredProductList = this.products.filter(
+        item => item.name.toLowerCase().indexOf(inputText.toLowerCase()) > -1
+      );
+    }
+    this.sortProductList();
+  }
 }

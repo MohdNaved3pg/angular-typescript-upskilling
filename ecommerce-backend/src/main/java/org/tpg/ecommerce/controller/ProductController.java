@@ -24,7 +24,7 @@ public class ProductController {
 	@Autowired
 	ProductRepository productRepository;
 
-	@GetMapping(value = "/product/image/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
+	@GetMapping(value = "/product/image/{id}.jpg", produces = MediaType.IMAGE_JPEG_VALUE)
 	public byte[] getImage(@PathVariable int id) throws IOException {
 		InputStream in = new ClassPathResource("product-images/" + id + ".jpg").getInputStream();
 		return IOUtils.toByteArray(in);

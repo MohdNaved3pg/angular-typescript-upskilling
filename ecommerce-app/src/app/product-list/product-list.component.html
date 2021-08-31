@@ -1,15 +1,56 @@
-<div class="container">
-    <br />
-    <div class="p-3 mb-2 bg-info text-white text-center">
-        <h1>{{category.name}}</h1>
-    </div>
-    <div class="card-columns">
-        <a routerLink="/product/{{ product.id }}" class="card prod" *ngFor="let product of products">
-            <img class="" src="{{ imageURLEndpoint + product.id}}" alt="No Image Available">
-            <div class="card-body">
-                <h4 class="card-title">{{product.name}}</h4>
-                <p class="card-text">${{product.price}}</p>
+<div class="container-fluid">
+    <div class="headBar p-3 mb-2 text-white text-center row">
+        <div class="col-sm-2 align-self-center">
+            <div class="form-group text-left pr-5">
+                <label for="sortProduct"><b>Sort By</b></label>
+                <select name="sortProduct" id="sortProduct" class="form-control" (change)="sortProductList()"
+                    [(ngModel)]="sortProductBy">
+                    <option value="name-asc">A-to-Z</option>
+                    <option value="name-desc">Z-to-A</option>
+                    <option value="price-asc">Price-low-to-High</option>
+                    <option value="price-desc">Price-High-to-Low</option>
+                </select>
             </div>
-        </a>
+        </div>
+        <div class="col-sm-8 align-self-center">
+            <h1>{{category.name}}</h1>
+        </div>
+        <div class="col-sm-2 align-self-center">
+            <div class="input-group">
+                <input #searchInput type="text" class="form-control" placeholder="Search"
+                    (input)="filterProducts(searchInput.value)">
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pr-2 pl-2">
+        <div class="col-md-3" *ngFor="let product of filteredProductList">
+            <div class="card mt-4 mb-3">
+                <a routerLink="/product/{{ product.id }}" class="prod-card align-item-center p-2 text-center">
+                    <img src="{{ imageURLEndpoint + product.id}}.jpg" alt="" class="rounded">
+                    <h5 class="mt-3">{{product.name}}</h5>
+                    <div class="cost mt-3 text-dark">
+                        <span [style.color]="product.cardColor">${{product.price}}</span>
+                        <div class="star mt-3 align-items-center">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </a>
+                <div [style.background]="product.cardColor" class="p-3 text-center text-white mt-3 cursor">
+                    <span class="text-uppercase">ADD TO CART</span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="filteredProductList?.length==0" class="col-sm-12 text-center pt-5" id="no-item">
+            <h2>No Items To Show</h2>
+        </div>
     </div>
 </div>

@@ -10,7 +10,7 @@
 
         <!-- Dropdown -->
         <li ngbDropdown class="d-inline-block">
-            <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Categories</a>
+            <a class="nav-link cursor" id="dropdownBasic1" ngbDropdownToggle>Categories</a>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <a *ngFor="let category of categories" class="dropdown-item" routerLink="/products/{{ category.id }}">{{
                     category.name }}</a>

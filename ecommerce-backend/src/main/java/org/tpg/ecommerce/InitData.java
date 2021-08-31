@@ -1,5 +1,7 @@
 package org.tpg.ecommerce;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -18,6 +20,7 @@ public class InitData {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void loadData() {
+		Random random = new Random();
 		Category category = categoryRepository.save(new Category("Headphones"));
 		for (int i = 1; i <= 20; i++) {
 			productRepository.save(new Product(i,
@@ -35,7 +38,7 @@ public class InitData {
 							+ "The headphone has been ergonomically and aesthetically designed for a seamless experience\n"
 							+ "One can connect to Rockerz 370 via dual modes for connectivity in the form of Bluetooth and AUX\n"
 							+ "1 year warranty from the date of purchase.",
-					10, 999, category));
+					10, random.nextInt((999 - 100) + 1) + 100, category));
 		}
 		category = categoryRepository.save(new Category("Mobiles"));
 		for (int i = 21; i <= 38; i++) {
@@ -46,7 +49,7 @@ public class InitData {
 							+ "    Battery: 5000 mAh large battery with 33W fast charger in-box and Type-C connectivity\n"
 							+ "    Processor: Qualcomm Snapdragon 678 with Kryo 460 Octa-core; 11nm process; Up to 2.2GHz clock speed\n"
 							+ "    Memory, Storage & SIM: 4GB RAM | 64GB UFS 2.2 storage expandable up to 512GB with dedicated SD card slot | Dual SIM (nano+nano) dual standby (4G+4G)",
-					10, 999, category));
+					10, random.nextInt((999 - 100) + 1) + 100, category));
 		}
 	}
 
