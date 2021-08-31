@@ -23,16 +23,17 @@
     background-color: white;
     border-radius: 20px;
     transition: transform .3s;
+    box-shadow: 0 10px 15px rgba(99, 1, 82, .1);
 }
+
+.productName {
+    height: 87px;
+    overflow: hidden;
+  }
 
 .card:hover {
     transform: translateY(-15px);
     transition: transform .3s;
-}
-
-.text1 {
-    font-size: 13px;
-    color: #cbcbcb;
 }
 
 .info {

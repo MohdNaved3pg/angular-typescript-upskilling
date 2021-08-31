@@ -2,24 +2,37 @@
     height: 465px;
 }
 
+.card {
+    box-shadow: 0 30px 40px rgba(99, 1, 82, .2);
+}
+
 #proImg img {
     -webkit-transition: all 1s;
     -moz-transition: all 1s;
     -o-transition: all 1s;
     -ms-transition: all 1s;
     transition: all 1s;
-    height: 72%;
+    height: 87%;
     display: block;
     margin: 0 auto;
 }
 
 #proImg:HOVER img {
-    height: 80%;
+    height: 95%;
     -webkit-transition: all 1s;
     -moz-transition: all 1s;
     -o-transition: all 1s;
     -ms-transition: all 1s;
     transition: all 1s;
+}
+
+.container-fluid {
+    background: rgb(230, 216, 243);
+}
+
+hr{
+
+    border: 1px solid rgba(99, 1, 82, .4);
 }
 
 .caption {
@@ -31,4 +44,43 @@
 
 #details {
     padding: 5px;
+}
+
+#product-container {
+    margin-right: 100px;
+    margin-left: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.proTitle {
+    background: rgb(99, 1, 82);
+    color: #fff;
+    padding: 10px;
+}
+
+.btn-purple {
+    background: rgb(99, 1, 82);
+    color: white;
+    font-weight: bold;
+}
+
+.btn-purple:hover {
+    background: rgb(116, 1, 96);
+}
+
+.btn-purple:active {
+    background: rgb(83, 1, 70);
+}
+
+#prodDescription .heading {
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.star {
+    color: #fbc02d;
+    font-size: 25px;;
 }

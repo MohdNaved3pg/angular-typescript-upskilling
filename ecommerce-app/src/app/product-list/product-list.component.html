@@ -32,7 +32,10 @@
             <div class="card mt-4 mb-3">
                 <a routerLink="/product/{{ product.id }}" class="prod-card align-item-center p-2 text-center">
                     <img src="{{ imageURLEndpoint + product.id}}.jpg" alt="" class="rounded">
-                    <h5 class="mt-3">{{product.name}}</h5>
+                    <div class="productName">
+                        <h5 class="mt-3">{{product.name}}</h5>
+                    </div>
+
                     <div class="cost mt-3 text-dark">
                         <span [style.color]="product.cardColor">${{product.price}}</span>
                         <div class="star mt-3 align-items-center">
