@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="headBar p-3 mb-2 text-white text-center row">
-        <div class="col-sm-2 align-self-center">
-            <div class="form-group text-left pr-5">
+        <div class="col-md-2 order-md-1 order-sm-2 align-self-center">
+            <div class="form-group text-left">
                 <label for="sortProduct"><b>Sort By</b></label>
                 <select name="sortProduct" id="sortProduct" class="form-control" (change)="sortProductList()"
                     [(ngModel)]="sortProductBy">
@@ -12,10 +12,10 @@
                 </select>
             </div>
         </div>
-        <div class="col-sm-8 align-self-center">
+        <div class="col-md-8 order-md-2 order-sm-1 align-self-center">
             <h1>{{category.name}}</h1>
         </div>
-        <div class="col-sm-2 align-self-center">
+        <div class="col-md-2 order-md-3 order-sm-3 align-self-center">
             <div class="input-group">
                 <input #searchInput type="text" class="form-control" placeholder="Search"
                     (input)="filterProducts(searchInput.value)">
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="row pr-2 pl-2">
-        <div class="col-md-3" *ngFor="let product of filteredProductList">
+        <div class="col-lg-3 col-md-6" *ngFor="let product of filteredProductList">
             <div class="card mt-4 mb-3">
                 <a routerLink="/product/{{ product.id }}" class="prod-card align-item-center p-2 text-center">
                     <img src="{{ imageURLEndpoint + product.id}}.jpg" alt="" class="rounded">
