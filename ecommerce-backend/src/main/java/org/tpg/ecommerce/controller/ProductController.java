@@ -29,6 +29,11 @@ public class ProductController {
 		InputStream in = new ClassPathResource("product-images/" + id + ".jpg").getInputStream();
 		return IOUtils.toByteArray(in);
 	}
+	
+	@GetMapping("/products")
+	public List<Product> getAllProducts() {
+		return productRepository.findAll();
+	}
 
 	@GetMapping(value = "/products/category/{categoryId}")
 	public List<Product> getProductByCategory(@PathVariable int categoryId) throws IOException {

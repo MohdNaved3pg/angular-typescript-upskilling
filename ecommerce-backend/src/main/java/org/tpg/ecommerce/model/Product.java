@@ -21,7 +21,6 @@ public class Product {
 
 	public Product() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Product(int id, String name, String description, int quantity, int price, Category category) {

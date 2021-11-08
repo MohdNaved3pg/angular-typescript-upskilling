@@ -8,7 +8,10 @@ export class ProductService {
     private endpointUrl = environment.backendURL;
     constructor(private http: HttpClient) { }
     getProducts(categoryId:string): Observable<Product[]> {
-        return this.http.get<Product[]>(this.endpointUrl + "/products/category/" + categoryId);
+        let productEndpoint : string = categoryId === null
+                                ? "/products"
+                                : "/products/category/" + categoryId;
+        return this.http.get<Product[]>(this.endpointUrl + productEndpoint );
     }
     getProduct(productId: string): Observable<Product> {
         return this.http.get<Product>(this.endpointUrl+"/product/"+productId);

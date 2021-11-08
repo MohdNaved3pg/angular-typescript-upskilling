@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] = []
   filteredProductList: Product[] = []
-  category: Category = { id: 0, name: "Invalid Category" };
+  category: Category = { id: 0, name: "" };
   imageURLEndpoint: string = environment.backendURL + "/product/image/"
   sortProductBy: string = 'name-asc';
 
@@ -26,16 +26,20 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     var categoryId = this.route.snapshot.paramMap.get('categoryId');
-    if (categoryId != null) {
-      this.productService.getProducts(categoryId as string).subscribe((data: Product[]) => {
-        this.products = data,
-          this.category = data[0].category,
-          this.sortProductList(),
-          this.products.forEach(this.setRandomCardColor),
-          this.filteredProductList = this.products
-      });
-    }
+    this.productService.getProducts(categoryId as string)
+      .subscribe((data: Product[]) => this.onProductsRecieved(data, categoryId as string));
   }
+
+  onProductsRecieved(data : Product[], categoryId : string) : void {
+    this.products = data;
+    if(categoryId != null) {
+      this.category = data[0].category;
+    }
+    this.sortProductList(),
+    this.products.forEach(this.setRandomCardColor),
+    this.filteredProductList = this.products
+  }
+
   sortProductList(): void {
     var propertyVsDirection = this.sortProductBy.split("-");
     var property = propertyVsDirection[0] as 'name' | 'price';
