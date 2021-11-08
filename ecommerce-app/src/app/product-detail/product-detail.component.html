@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div id="product-container">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-lg-4">
                 <div class="sticky-top pt-3" style="z-index: 1;">
                     <div id="proImg" class="card pt-2">
                         <img src='{{ imageURLEndpoint + product.id}}.jpg' alt="No Image Available" />
@@ -17,7 +17,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-sm-8 pt-3">
+            <div class="col-lg-8 pt-3">
                 <div class="card" id="details">
                     <div class="card-heading proTitle">
                         <h2>{{product.name}}</h2>
@@ -48,11 +48,11 @@
                     </div>
                     <hr>
                     <div class="card-body">
-                        <h3>
+                        <h4>
                             <ul>
                                 <li *ngFor="let desc of product.description.split('\n')">{{desc}}</li><br />
                             </ul>
-                        </h3>
+                        </h4>
                     </div>
                 </div>
             </div>
